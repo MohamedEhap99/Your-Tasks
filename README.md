@@ -3,6 +3,9 @@
 A new Flutter project.
 
 ## Getting Started
+Flutter Application using state management(Bloc), Local Database (sqflite), and Shared Preferences package.
+
+Task List is a ToDo List app for organizing the build of daily tasks.
 
 This project is a starting point for a Flutter application.
 
