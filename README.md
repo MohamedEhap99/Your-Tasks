@@ -6,6 +6,7 @@ A new Flutter project.
 Flutter Application using state management(Bloc), Local Database (sqflite), and Shared Preferences package.
 
 Task List is a ToDo List app for organizing the build of daily tasks.
+![Apple iPhone 11 Pro Max Presentation](https://user-images.githubusercontent.com/92197988/162580512-84ef1046-db58-4865-9e59-7ffd3ddb99fb.png)
 
 This project is a starting point for a Flutter application.
 
