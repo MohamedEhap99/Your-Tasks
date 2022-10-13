@@ -1,20 +1,18 @@
+import 'dart:io';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/shared/components/components.dart';
-import 'package:todo_app/shared/constants/constants.dart';
 import 'package:todo_app/shared/cubit/cubit.dart';
 import 'package:todo_app/shared/cubit/states.dart';
 
 class Home_Layout extends StatelessWidget{
-
-  var scaffoldKey=GlobalKey<ScaffoldState>();
-  var formkey=GlobalKey<FormState>();
   var titleController=TextEditingController();
   var timeController=TextEditingController();
   var dateController=TextEditingController();
+ var scaffoldKey=GlobalKey<ScaffoldState>();
+ var formkey=GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +20,9 @@ class Home_Layout extends StatelessWidget{
      create: (BuildContext context)=>TodoAppCubit()..CreateDatabase(),
      child: BlocConsumer<TodoAppCubit,TodoAppStates>(
        listener: (BuildContext context, state) {
-         // if(state is InsertToDatabaseState){
-         //   Navigator.pop(context);
-         // }
+          if(state is InsertToDatabaseState){
+            Navigator.pop(context);
+          }
        },
        builder: (BuildContext context, Object? state) {
          TodoAppCubit Cubit=TodoAppCubit.get(context);
@@ -38,7 +36,7 @@ class Home_Layout extends StatelessWidget{
            builder:(context)=>Cubit.Screens[Cubit.CurrentIndex],
              fallback:(context)=>Center(child: CircularProgressIndicator()),
          ) ,
-         floatingActionButton: FloatingActionButton(
+         floatingActionButton:Platform.isIOS?Container():FloatingActionButton(
            onPressed: (){
              if(Cubit.isBottomSheetShown){
                if(formkey.currentState!.validate()){

@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
@@ -30,6 +29,7 @@ class TodoAppCubit extends Cubit<TodoAppStates>{
   List<Map> newtasks=[];
   List<Map> donetasks=[];
   List<Map> archivetasks=[];
+
   void CreateDatabase(){
      openDatabase(
         'todo.db',
@@ -50,6 +50,7 @@ class TodoAppCubit extends Cubit<TodoAppStates>{
       emit(CreateDatabaseState());
     });
   }
+
   InsertToDatabase({
   required String title,
   required String time,
@@ -71,6 +72,7 @@ class TodoAppCubit extends Cubit<TodoAppStates>{
     );
 
   }
+
   void GetDataFromDatabase(database){
      newtasks=[];
      donetasks=[];
